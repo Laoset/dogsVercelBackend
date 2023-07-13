@@ -1,4 +1,4 @@
-import { getTodo } from "../util/utilidades";
+const { getTodo } = require("../util/utilidades");
 const dogsController = {
   getAllDogs: async (req, res) => {
     const name = req.query.name;
@@ -16,11 +16,12 @@ const dogsController = {
   },
   getDogById: async (req, res) => {
     try {
-      const { idRaza } = req.params;
+      const { id } = req.params;
       //Primero me traigo todos los perros
       const todos = await getTodo();
+      // console.log(todos);
       //Segundo, filtro y matcheo con la raza correspondiente
-      const filtrado = todos.filter((r) => r.id == idRaza);
+      const filtrado = todos.filter((r) => r.id == id);
       filtrado.length
         ? res.status(200).send(filtrado)
         : res.status(404).send("No existe tal raza de perro con ese ID");
@@ -67,6 +68,7 @@ const dogsController = {
     try {
       //lo que necesito por body (formulario frontEnd)
       const { name, weight, life_span, image, height, temperaments } = req.body;
+      console.log(name, weight, life_span, image, height, temperaments);
       //todo lo que tenga el modelo TEMPERAMENT donde el name sea temperaments(body)
       const newTemperament = await Temperament.findAll({
         where: { name: temperaments },
@@ -79,8 +81,11 @@ const dogsController = {
         image,
         height,
       });
+      console.log(creadoDog);
       //a la informacion anterior le hago el metodo ADD que lo asocia con el modelo TEMP y le pasa la variable que tiene la info del TEMPERAMENTO, LO UNE
       await creadoDog.addTemperament(newTemperament);
+      console.log(creadoDog);
+
       res.status(200).send(creadoDog);
     } catch (error) {
       res.status(400).send("No se pudo crear el perro, verifique datos");

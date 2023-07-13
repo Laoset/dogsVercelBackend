@@ -67,5 +67,6 @@ const getTodo = async () => {
   const dbInfo = await getDbData();
   return [...dbInfo, ...revision];
 };
-
-export default { getTodo };
+module.exports = {
+  getTodo,
+};
