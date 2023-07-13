@@ -14,6 +14,7 @@ const path = require("path");
 const sequelize = new Sequelize(process.env.POSTGRES_URL, {
   logging: false, // Establece en console.log para ver las consultas SQL en bruto
   dialect: "postgres",
+  dialectModule: pg,
   dialectOptions: {
     ssl: {
       require: true,
