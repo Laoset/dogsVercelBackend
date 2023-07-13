@@ -1,6 +1,6 @@
 const { DOGS_API_KEY } = process.env;
 const axios = require("axios");
-const { Dog, Temperament } = require("../database.JS");
+const { Dog, Temperament } = require("../database");
 //Funcion que al EJECUTARSE me trae los PERROS con su correspondientes PROPIEDADES
 const getApiData = async () => {
   //Me guardo lo que trae la API
