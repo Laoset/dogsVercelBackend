@@ -46,7 +46,7 @@ const bookController = {
 
       const { rows } = await postgre.query(sql, [name, price, req.params.id]);
 
-      res.json({ msg: "OK", data: rows[0] });
+      res.json({ msg: "OssK", data: rows[0] });
     } catch (error) {
       res.json({ msg: error.msg });
     }
