@@ -1,6 +1,5 @@
 // const { Pool } = require("pg");
 const { Sequelize } = require("sequelize");
-
 const fs = require("fs");
 const path = require("path");
 // const pool = new Pool({
@@ -14,7 +13,7 @@ const path = require("path");
 const sequelize = new Sequelize(process.env.POSTGRES_URL, {
   logging: false, // Establece en console.log para ver las consultas SQL en bruto
   dialect: "postgres",
-  dialectModule: pg,
+  dialectModule: require("pg"),
   dialectOptions: {
     ssl: {
       require: true,
