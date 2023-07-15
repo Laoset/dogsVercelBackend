@@ -1,4 +1,6 @@
 const { getTodo } = require("../util/utilidades");
+const { Dog, Temperament } = require("../database.js");
+
 const dogsController = {
   getAllDogs: async (req, res) => {
     const name = req.query.name;
